@@ -45,7 +45,7 @@ export const Navbar = () => {
         </div>
         <ul className='flex space-x-4 gap-4 cursor-pointer'>
           {navLinks.map((link, i) => {
-            return <li className='text-white font-thin hover:text-gray-600 '><a>{link.title}</a></li>
+            return <li key= {i} className='text-white font-thin hover:text-gray-600 '><a>{link.title}</a></li>
           })}
         </ul>
         <div>

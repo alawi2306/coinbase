@@ -2,13 +2,16 @@
 
 import { setData1, setData2, setData3 } from '../slices/apiSlice';
 
+const apiKey = process.env.NEXT_PUBLIC_RAPIDAPI_KEY;
+
+console.log(apiKey)
 
 export const fetchData1 = (number) => async (dispatch) => {
     const url = `https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&tiers%5B0%5D=1&orderBy=marketCap&orderDirection=desc&limit=${number}&offset=0`;
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '88858a762emshd684ea4c27033d8p15caf5jsnceb873ebba8a',
+            'X-RapidAPI-Key': apiKey,
             'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com',
         },
     };
@@ -36,7 +39,7 @@ export const fetchData2 = (searchQuery) => async (dispatch) => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '88858a762emshd684ea4c27033d8p15caf5jsnceb873ebba8a',
+      'X-RapidAPI-Key': apiKey,
       'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com',
     },
   };
@@ -61,7 +64,7 @@ export const fetchData3 = () => async (dispatch) => {
   const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '88858a762emshd684ea4c27033d8p15caf5jsnceb873ebba8a',
+    'X-RapidAPI-Key': apiKey,
 		'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
 	}
 };

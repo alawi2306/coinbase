@@ -4,6 +4,8 @@ import "./globals.css"
 import { Inter } from 'next/font/google';
 import { Provider } from 'react-redux';
 
+require('dotenv').config();
+
 // Assuming you have a Redux store configured
 import store from './Redux/store';
 

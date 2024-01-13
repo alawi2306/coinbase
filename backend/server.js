@@ -6,7 +6,12 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 const bcrypt = require('bcrypt');
-require('dotenv').config();
+
+const result = require('dotenv').config();
+
+if (result.error) {
+  console.error('Error loading .env file:', result.error);
+}
 
 const app = express();
 const PORT = 3001;
@@ -14,11 +19,20 @@ const PORT = 3001;
 app.use(bodyParser.json());
 app.use(cors());
 
-// Now you can use process.env to access the variables defined in .env
-
+// Accessing environment variables
 const URI = process.env.MONGODB_URI;
 
-mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// Adding some debugging output
+console.log('MONGODB_URI:', URI);
+
+mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+  });
+
 
 const UserSchema = new mongoose.Schema({
   name: String,

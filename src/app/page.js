@@ -2,6 +2,7 @@ import Hero from "./Components/Hero"
 import Header from "./Components/Header"
 import landingPage from "./Components/Landing"
 
+require('dotenv').config();
 
 export default function Home() {
   return (

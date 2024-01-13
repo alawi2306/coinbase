@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import {styles} from "../styles.js"
 import CoinCanvas from '../Canvas/coin';
 import "../globals.css"
+import { useRouter  } from 'next/navigation';
+
 
 const mapStateToProps = (state) => ({
   loggedIn: state.loggedIn.loggedIn
@@ -27,7 +29,6 @@ const Header = ({ loggedIn }) => {
         <p className={`${styles.heroSubText} text-center my-5`}>
            Coinpulse is a free source of finding out cryptocurrency data! Explore the world of cryptocurrencies and stay updated with the latest trends.
         </p>     
-      <Button>Get started!</Button>
        </div>
       <div className='h-[80%] w-[40%]'>
         <CoinCanvas />
