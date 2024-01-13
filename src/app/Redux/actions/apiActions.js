@@ -82,7 +82,6 @@ export const fetchData3 = () => async (dispatch) => {
       throw new Error(`Error fetching data3: ${response.statusText}`);
     }
     const data = await response.json();
-    console.log(data)
     dispatch(setData3(data));
   } catch (error) {
     // Handle error

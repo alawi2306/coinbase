@@ -1,5 +1,4 @@
-
-"use client"
+"use client";
 
 import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
@@ -9,81 +8,91 @@ import Box from './Box';
 import { TextField, Typography, Button } from '@mui/material';
 import Stats from './Stats';
 import { setNumber } from '../Redux/slices/numberSlice';
+import CoinCanvas from '../Canvas/coin';
+import landingPage from './Landing';
+import { styles } from '../styles';
 
-const Hero = ({ fetchData1, apiData1, searchQuery, fetchData2, apiData2, number }) => {
+const Hero = ({ apiData1, searchQuery, apiData2, number, fetchData1, fetchData2, loggedIn }) => {
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchData1(number);
-
-  }, [searchQuery, dispatch]);
+    number && fetchData1(number);
+  }, [searchQuery, number, fetchData1]);
 
   const onChange = (e) => {
-    // Dispatch setSearchQuery directly in the component
     dispatch(setSearchQuery(e.target.value));
-    // Use fetchData2 directly in the component
     e.target.value !== null && fetchData2(e.target.value);
   };
 
-  const incrementNumber = (e) => {
-     dispatch(setNumber(...number + 50))
-  }
-
+  const incrementNumber = () => {
+    if (number !== null && number !== undefined) {
+      dispatch(setNumber(number + 10));
+    }
+  };
 
   return (
-    <div className='flex align-center items-center flex-col'>
-      <Stats></Stats>
-      <div className='m-10 flex justify-evenly items-center w-full'>
-        <div>
-          <Typography variant="h6">We list the top cryptocurrencies currently available on the market</Typography>
+    <div>
+      {loggedIn ? (
+      <div className="flex align-center items-center flex-col hero-pattern">
+        <landingPage />
+        <Stats />
+        <div className="m-10 flex justify-evenly items-center w-full">
+          <div>
+            <Typography variant="h6">
+              We list the top cryptocurrencies currently available on the market
+            </Typography>
+          </div>
+          <div className="flex flex-row items-center align-center">
+            <Typography style={{ margin: '0 20px' }}>
+              Search here for your specific coin:
+            </Typography>
+            <TextField onChange={onChange} />
+          </div>
         </div>
-        <div className='flex flex-row items-center align-center'>
-          <Typography style={{ margin: '0 20px' }}>Search here for your specific coin: </Typography>
-          <TextField onChange={onChange}></TextField>
+        <Typography variant="h4" gutterBottom style={{ fontWeight: '600' }}>
+          The current top 50:
+        </Typography>
+        <div className="flex flex-row flex-wrap w-full h-full align-center items-center">
+          {apiData2.length === 0
+            ? apiData1?.data.coins?.map((e, i) => (
+                <Box
+                  title={e.name}
+                  image={e.iconUrl}
+                  key={i}
+                  rank={e.rank}
+                  price={e.price}
+                  coinID={e.uuid}
+                />
+              ))
+            : apiData2.data.coins.map((e, i) => (
+                <Box
+                  title={e.name}
+                  image={e.iconUrl}
+                  key={i}
+                  rank={e.rank}
+                  price={e.price}
+                  coinID={e.uuid}
+                />
+              ))}
         </div>
+    
+        <Button onClick={incrementNumber}>Render more cards</Button>
       </div>
-      <Typography variant="h4" gutterBottom style={{ fontWeight: '600' }}>The current top 50:</Typography>
-      <div className='flex flex-row flex-wrap w-full h-full align-center items-center'>
-  {apiData2.length === 0
-    ? apiData1?.data.coins?.map((e, i) => (
-        <Box
-          title={e.name}
-          image={e.iconUrl}
-          key={i}
-          rank={e.rank}
-          price={e.price}
-          coinID={e.uuid}
-        />
-      ))
-    : apiData2.data.coins.map((e, i) => (
-        <Box
-          title={e.name}
-          image={e.iconUrl}
-          key={i}
-          rank={e.rank}
-          price={e.price}
-          coinID={e.uuid}
-        />
-      ))}
-</div>
-
-
-    <Button>Render more cards</Button>
-
-
+    ) : null}
+    
     </div>
+    
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-    apiData1: state.api.apiData1,
-    searchQuery: state.searchQuery,  // Make sure to access the correct property
-    apiData2: state.api.apiData2,
-    number: state.number
-  };
-};
+const mapStateToProps = (state) => ({
+  apiData1: state.api.apiData1,
+  searchQuery: state.searchQuery,
+  apiData2: state.api.apiData2,
+  number: state.number.number,
+  loggedIn: state.loggedIn.loggedIn
+});
 
 const mapDispatchToProps = {
   fetchData1,
