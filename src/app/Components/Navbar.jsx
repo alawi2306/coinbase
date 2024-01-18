@@ -1,12 +1,14 @@
 "use client"
 
-import React from 'react';
+import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBitcoinSign } from '@fortawesome/free-solid-svg-icons';
 import { Button } from '@mui/material';
 import { useRouter  } from 'next/navigation';
 import { setLogin } from '../Redux/slices/loginSlice';
 import { useDispatch } from 'react-redux';
+import "../globals.css"
+import { motion } from 'framer-motion';
 
 const navLinks = [
   {
@@ -23,39 +25,69 @@ const navLinks = [
   }
 ]
 
+// ... (your imports)
+
 export const Navbar = () => {
-  const router = useRouter()
-  const dispatch = useDispatch()
+  const [isClicked, setIsClicked] = useState(null);
+
+  const animationVariants = {
+    hidden: {
+      opacity: 0,
+      y: -50, // Move the Navbar off-screen initially
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        damping: 10,
+        stiffness: 100,
+      },
+    },
+  };
+
+  const router = useRouter();
+  const dispatch = useDispatch();
+
   const onLogin = () => {
-    router.push("/Login")
-    dispatch(setLogin("Login"))
-  }
+    router.push("/Login");
+    dispatch(setLogin("Login"));
+  };
 
   const onSignup = () => {
-    router.push("/Login")
-    dispatch(setLogin("Register"))
-  }
+    router.push("/Login");
+    dispatch(setLogin("Register"));
+  };
+
   return (
-    <div className='flex justify-center'>
-      <nav className='flex justify-around items-center w-full p-4 top-0 bg-primary text-white'>
-        <div className='flex items-center'>
-          <h1 className='text-xl font-bold'>Coin Pulse</h1>
-          <FontAwesomeIcon icon={faBitcoinSign} className='text-2xl ml-2 h-8 w-8' />
-
-        </div>
-        <ul className='flex space-x-4 gap-4 cursor-pointer'>
-          {navLinks.map((link, i) => {
-            return <li key= {i} className='text-white font-thin hover:text-gray-600 '><a>{link.title}</a></li>
-          })}
-        </ul>
-        <div>
-          <Button onClick={onLogin} style= {{color: 'blue', margin: '5px'}}>Login</Button>
-          <Button onClick={onSignup} variant= "contained">Sign up</Button>
-
-        </div>
-
-      </nav>
-    </div>
+    <motion.div
+     
+    >
+      <div className='flex justify-center'>
+        <nav className='flex justify-around items-center w-full p-4 top-0 bg-black text-white'>
+          <div className='flex items-center'>
+            <h1 className='text-xl font-bold'>
+              Coin <span className='pink-text-gradient'> Pulse </span>
+            </h1>
+            <FontAwesomeIcon icon={faBitcoinSign} className='text-2xl ml-2 h-8 w-8' />
+          </div>
+          <ul className='flex space-x-4 gap-4 cursor-pointer'>
+            {navLinks.map((link, i) => (
+              <li
+                key={i}
+                onClick={() => setIsClicked(i)}
+                className={`text-white font-bold hover:text-gray-500 text-lg ${i === isClicked ? 'text-gray-500' : ''}`}
+              >
+                <a>{link.title}</a>
+              </li>
+            ))}
+          </ul>
+          <div>
+            <Button onClick={onLogin} className='text-white font-bold text-lg cursor-pointer z-100 p-5'>Login</Button>
+            <Button onClick={onSignup} className='text-white font-bold text-lg cursor-pointer'>Sign up</Button>
+          </div>
+        </nav>
+      </div>
+    </motion.div>
   );
 };
-

@@ -8,9 +8,7 @@ import Box from './Box';
 import { TextField, Typography, Button } from '@mui/material';
 import Stats from './Stats';
 import { setNumber } from '../Redux/slices/numberSlice';
-import CoinCanvas from '../Canvas/coin';
-import landingPage from './Landing';
-import { styles } from '../styles';
+
 
 const Hero = ({ apiData1, searchQuery, apiData2, number, fetchData1, fetchData2, loggedIn }) => {
 
