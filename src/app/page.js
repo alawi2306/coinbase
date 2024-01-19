@@ -1,15 +1,13 @@
-import Hero from "./Components/Hero"
 import Header from "./Components/Header"
-import landingPage from "./Components/Landing"
+import Description from "./Components/Description"
 
 require('dotenv').config();
 
 export default function Home() {
   return (
-    <div className="flex h-100 flex-col">
-      <landingPage></landingPage>
+    <div className="flex flex-col">
       <Header />
-      <Hero />
+      <Description />
     </div>
   )
 }

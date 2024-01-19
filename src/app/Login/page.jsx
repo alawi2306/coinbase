@@ -44,7 +44,7 @@ const Login = ({ login }) => {
       const userData = { email: userEmail, password: userPassword };
       const response = await axios.post(`${API_URL}/login`, userData);
       console.log('Login Response:', response.data);
-      router.push('/');
+      router.push('/Dashboard');
       dispatch(setLoggedIn(true));
     } catch (error) {
       console.error('Login Error:', error);

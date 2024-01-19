@@ -33,7 +33,6 @@ const Hero = ({ apiData1, searchQuery, apiData2, number, fetchData1, fetchData2,
     <div>
       {loggedIn ? (
       <div className="flex align-center items-center flex-col hero-pattern">
-        <landingPage />
         <Stats />
         <div className="m-10 flex justify-evenly items-center w-full">
           <div>

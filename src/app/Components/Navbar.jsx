@@ -64,14 +64,14 @@ export const Navbar = () => {
      
     >
       <div className='flex justify-center'>
-        <nav className='flex justify-around items-center w-full p-4 top-0 bg-black text-white'>
-          <div className='flex items-center'>
+        <nav className='flex justify-evenly items-center w-full p-4 top-0 bg-black text-white'>
+          <div className='flex items-center flex-row justify-center flex-wrap'>
             <h1 className='text-xl font-bold'>
               Coin <span className='pink-text-gradient'> Pulse </span>
             </h1>
             <FontAwesomeIcon icon={faBitcoinSign} className='text-2xl ml-2 h-8 w-8' />
           </div>
-          <ul className='flex space-x-4 gap-4 cursor-pointer'>
+          <ul className='flex space-x-4 gap-4 cursor-pointer lg:text-lg md:text-md sm:text-sm'>
             {navLinks.map((link, i) => (
               <li
                 key={i}
@@ -82,7 +82,7 @@ export const Navbar = () => {
               </li>
             ))}
           </ul>
-          <div>
+          <div className='flex flex-nowrap flex-row'>
             <Button onClick={onLogin} className='text-white font-bold text-lg cursor-pointer z-100 p-5'>Login</Button>
             <Button onClick={onSignup} className='text-white font-bold text-lg cursor-pointer'>Sign up</Button>
           </div>
