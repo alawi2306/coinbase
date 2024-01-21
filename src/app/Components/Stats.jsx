@@ -33,7 +33,7 @@ const StatsBox = ({ volume, totalmarkets, marketcap }) => {
 const Stats = ({ apiData3, fetchData3, loading }) => {
   useEffect(() => {
     fetchData3();
-  }, []);
+  }, [fetchData3()]);
 
   return (
     <div className='h-screen flex justify-center items-center w-full flex-col bg-black'>

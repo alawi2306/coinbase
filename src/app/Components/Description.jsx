@@ -45,7 +45,7 @@ const Description = () => {
     >
       <div className='relative top-0 left-0 w-[50%] h-1 bg-gray-500' />
       {/* About us div */}
-      <div className='flex flex-col items-center justify-between lg:my-10 md:my-6 sm:my-3 h-[35%] w-[60%]'>
+      <div className='flex flex-col items-center justify-evenly lg:my-10 md:my-6 sm:my-3 h-[35%] w-[60%]'>
         <Typography className={`${styles.sectionHeadText} lg:mt-8 md:mt-6 sm:mt-4}`}>
           The <span className="pink-text-gradient">crypto dashboard</span> which helps elevate your productivity.
         </Typography>

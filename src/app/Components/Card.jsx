@@ -6,6 +6,7 @@ import "../globals.css"
 import { Tilt } from 'react-tilt'
 import { motion } from 'framer-motion'
 import {fadeIn} from '../motion';
+import Image from 'next/image'
 
 const Card = ({name, desc, url, index}) => {
     const [mousePosition, setMousePosition] = useState({ x: null, y: null });
@@ -48,7 +49,7 @@ const Card = ({name, desc, url, index}) => {
     >
         <h3 className={`${styles.sectionSubText}`}>{name}</h3>
         <p className='text-white text-md font-medium flex items-center justify-center lg:mx-6 md:mx-4 sm:mx-2'>{desc}</p>
-        <img className='w-16 h-16' src={url} alt="" srcset="" />
+        <Image className='w-16 h-16' src={url} alt="" srcset="" />
     </div> 
         </motion.div>
              

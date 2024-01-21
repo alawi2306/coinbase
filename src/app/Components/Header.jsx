@@ -7,8 +7,8 @@ import { styles } from "../styles.js";
 import "../globals.css";
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import Description from './Description';
-import { fadeIn } from '../motion';
+import Image from 'next/image';
+
 
 const mapStateToProps = (state) => ({
   loggedIn: state.loggedIn.loggedIn
@@ -47,7 +47,7 @@ const Header = () => {
             </p>
           </div>
           <div className='h-[80%] w-[40%] flex justify-center items-center relative '>
-            <img className='w-120 h-100' src="/assets/chart.jpg" alt="" />
+            <Image className='w-120 h-100' src="/assets/chart.jpg" alt="" />
           </div>
         </div>
     </motion.header>
