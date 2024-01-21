@@ -8,6 +8,8 @@ import Box from './Box';
 import { TextField, Typography, Button } from '@mui/material';
 import Stats from './Stats';
 import { setNumber } from '../Redux/slices/numberSlice';
+import '@mui/material/styles';
+
 
 
 const Hero = ({ apiData1, searchQuery, apiData2, number, fetchData1, fetchData2, loggedIn }) => {
@@ -32,19 +34,25 @@ const Hero = ({ apiData1, searchQuery, apiData2, number, fetchData1, fetchData2,
   return (
     <div>
       {loggedIn ? (
-      <div className="flex align-center items-center flex-col hero-pattern">
+      <div className="flex justify-center items-center flex-col hero-pattern">
         <Stats />
-        <div className="m-10 flex justify-evenly items-center w-full">
+        <div className="m-10 flex justify-center items-center w-full">
           <div>
             <Typography variant="h6">
               We list the top cryptocurrencies currently available on the market
             </Typography>
           </div>
-          <div className="flex flex-row items-center align-center">
+          <div className="flex flex-row items-center justify-center">
             <Typography style={{ margin: '0 20px' }}>
               Search here for your specific coin:
             </Typography>
-            <TextField onChange={onChange} />
+            <TextField
+                type="text"
+                onChange={onChange}
+                variant="outlined"
+                className="z-10"
+
+              />
           </div>
         </div>
         <Typography variant="h4" gutterBottom style={{ fontWeight: '600' }}>

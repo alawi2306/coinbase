@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { fetchData1 } from '@/app/Redux/actions/apiActions';
 import { Line } from 'react-chartjs-2';
 import { LinearScale, CategoryScale, PointElement, LineElement, Chart } from 'chart.js';
+import {styles} from "../../styles"
+import "../../globals.css"
 
 Chart.register(LinearScale, CategoryScale, PointElement, LineElement);
 
@@ -64,8 +66,8 @@ const CoinID = ({ params, fetchData1, data }) => {
     if (specificCoin) {
       return (
         <div>
-          <p>Name: {specificCoin.name}</p>
-          <p>Rank: {specificCoin.rank}</p>
+          <p className={`${styles.heroHeadText} pink-text-gradient`}>Name: {specificCoin.name}</p>
+          <p className={`${styles.heroSubText} `}>Rank: {specificCoin.rank}</p>
         </div>
       );
     }
@@ -74,7 +76,7 @@ const CoinID = ({ params, fetchData1, data }) => {
   };
 
   return (
-    <div>
+    <div className='w-screen h-screen flex flex-col items-center '>
       <h1>{renderSpecificCoin()}</h1>
       <CoinCard data={data} params={params} />
     </div>

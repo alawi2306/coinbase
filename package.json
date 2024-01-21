@@ -36,8 +36,10 @@
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.5.3",
     "react-redux": "^9.0.2",
     "react-three-fiber": "^6.0.13",
+    "react-tilt": "^1.0.2",
     "redux": "^5.0.0",
     "three": "^0.160.0"
   },

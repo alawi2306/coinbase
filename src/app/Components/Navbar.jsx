@@ -61,7 +61,6 @@ export const Navbar = () => {
 
   return (
     <motion.div
-     
     >
       <div className='flex justify-center'>
         <nav className='flex justify-evenly items-center w-full p-4 top-0 bg-black text-white'>

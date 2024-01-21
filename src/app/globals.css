@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 
+
 body {
   margin: 0;
 }
@@ -297,3 +298,16 @@ body {
   background: #65c4fa;
   filter: blur(150px);
 }
+
+.hover-effect::before {
+  background: radial-gradient(800px at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.24), transparent 80%);
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  border-radius: inherit;
+  content: "";
+  z-index: 2;
+}
+
