@@ -32,6 +32,7 @@ const Start = () => {
                 return <CardDescription 
                 title= {link.title}
                 desc= {link.desc}
+                key= {i}
                 />
              })}
            </div>

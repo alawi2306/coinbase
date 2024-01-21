@@ -57,7 +57,7 @@ const CoinCard = ({ data, params }) => {
 const CoinID = ({ params, fetchData1, data }) => {
   useEffect(() => {
     fetchData1();
-  }, [fetchData1()]); // Remove fetchData1 from the dependency array if it doesn't change
+  }, [fetchData1]); // Remove fetchData1 from the dependency array if it doesn't change
 
   // Function to render specific coin details
   const renderSpecificCoin = () => {
