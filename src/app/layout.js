@@ -3,6 +3,8 @@
 import "./globals.css"
 import { Inter } from 'next/font/google';
 import { Provider } from 'react-redux';
+import { Analytics } from '@vercel/analytics/react';
+
 
 require('dotenv').config();
 
@@ -27,7 +29,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {/* Provide the Redux store to the entire application */}
         <Provider store={store}>
+          
           {children}
+          <Analytics />
         </Provider>
       </body>
     </html>
